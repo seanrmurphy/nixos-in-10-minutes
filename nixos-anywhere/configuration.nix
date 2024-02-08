@@ -22,19 +22,26 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # uncomment this to enable docker
-  # virtualization.docker.enable = true;
+  # UNCOMMENT this to enable docker
+  # virtualisation.docker.enable = true;
+
+  programs.fish.enable = true;
+
+  security.sudo.wheelNeedsPassword = false;
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+    };
 
-    # uncomment this to enable headscale
+    # UNCOMMENT this to enable headscale
     # headscale.enable = true;
 
-    # uncomment this to enable a prometheus node exporter
+    # UNCOMMENT this to enable a prometheus node exporter
     # prometheus.exporters.node.enable = true;
     
-    # uncomment this to enable homeassistant-satellite - it's prob necessary to add more configuration here
+    # UNCOMMENT this to enable homeassistant-satellite - it's prob necessary to add more configuration here
     # homeassistant-satellite.enable = true;
   };
 
@@ -42,7 +49,7 @@
     pkgs.curl
     pkgs.gitMinimal
 
-    # uncomment the following to install these packages systemwide
+    # UNCOMMENT the following to install these packages systemwide
     # pkgs.jq
     # pkgs.neovim
     # pkgs.fzf
@@ -57,11 +64,11 @@
       ];
     };
 
-    # uncomment the following to enable the nixos user
+    # UNCOMMENT the following to enable the nixos user
     # nixos = {
     #   isNormalUser = true; 
     #   shell = pkgs.fish; 
-    #   description = "Sean Murphy"; 
+    #   description = "nixos user"; 
     #   extraGroups = [ 
     #     "networkmanager" 
     #     "wheel" 
