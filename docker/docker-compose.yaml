@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nixos-anywhere: 
+    image: nixpkgs/nix:nixos-23.11
+    stdin_open: true
+    tty: true
+    volumes:
+    - nixos-anywhere-vol:/root
+
+volumes:
+  nixos-anywhere-vol:
