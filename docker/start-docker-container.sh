@@ -1,3 +1,3 @@
-#! /usr/bim/env bash
+#! /usr/bin/env bash
 
 docker-compose run --rm nixos-anywhere
