@@ -4,8 +4,11 @@ services:
     image: nixpkgs/nix:nixos-23.11
     stdin_open: true
     tty: true
+# network_mode:host is not always required but if the VM is on the same machine as the docker engine, it can reduce likelihood of networking issues across internal bridges
+    network_mode: host
     volumes:
     - nixos-anywhere-vol:/root
+
 
 volumes:
   nixos-anywhere-vol:

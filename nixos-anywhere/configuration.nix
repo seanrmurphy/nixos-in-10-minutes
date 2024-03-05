@@ -4,12 +4,20 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
   ];
+
+  # allow unfree packages to be installed
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   boot.loader.grub = {
     # no need to set devices, disko will add all devices that have a EF02 partition to the list already
     # devices = [ ];
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking = {
     hostName = "nixos"; # Define your hostname.
@@ -60,7 +68,8 @@
     root = {
       # change this to your ssh key
       openssh.authorizedKeys.keys = [
-        "CHANGE"
+        "CHANGE-PUBKEY1"
+        "CHANGE-PUBKEY2"
       ];
     };
 
